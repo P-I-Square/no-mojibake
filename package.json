@@ -1,0 +1,33 @@
+{
+  "name": "no-mojibake",
+  "version": "1.0.0",
+  "description": "change characters to no mojibake characters",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc && cd example && npx webpack",
+    "test": "npx jest",
+    "coverage": "npx jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/P-I-Square/no-mojibake.git"
+  },
+  "keywords": [
+    "mojibake",
+    "kanji",
+    "gaiji",
+    "dependent"
+  ],
+  "author": "pisquare.co.jp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/P-I-Square/no-mojibake/issues"
+  },
+  "homepage": "https://github.com/P-I-Square/no-mojibake#readme",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.4",
+    "typescript": "^5.9.3"
+  }
+}

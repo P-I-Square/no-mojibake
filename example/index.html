@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script>
+            change = () => {
+                var a = document.querySelector("#a")
+                var b = document.querySelector("#b")
+                encoder.encode(a.value)
+                b.value = "test"
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Sample No Mojibake</h1>
+        <textarea id="a" class="no-mojibake" data-out="#b" data-result="">①②⑪ⅠⅩⅨ㎏髙</textarea>
+        →
+        <textarea id="b" disabled></textarea>
+        <script src="./dist/main.js"></script>
+    </body>
+</html>
