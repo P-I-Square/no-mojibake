@@ -8,7 +8,7 @@ function encode() {
                 const result = NoMojibake.encode(element.value);
                 const out = document.querySelector(element.dataset.out)
                 if(out) out.value = result
-                if(element.dataset.result) element.dataset.result = result
+                if(element.dataset.result != undefined) element.dataset.result = result
             });
         }
     });

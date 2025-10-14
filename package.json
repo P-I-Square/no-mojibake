@@ -1,6 +1,6 @@
 {
   "name": "no-mojibake",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "change characters to no mojibake characters",
   "main": "index.js",
   "scripts": {
