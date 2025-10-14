@@ -19,6 +19,20 @@ console.log(NoMojibake.encode("①")); // (1)
 
 ```
 
+## cdn json
+
+### Dictionary Type
+https://cdn.jsdelivr.net/npm/no-mojibake/dist/AlternativesDict.min.json
+```
+{"①": "(1)"}
+```
+
+### Normal Type
+https://cdn.jsdelivr.net/npm/no-mojibake/dist/Alternatives.min.json
+```
+{"before":"①","after":"(1)"}
+```
+
 ## simple web
 
 ### data-result
