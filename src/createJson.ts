@@ -2,40 +2,18 @@ import { Alternatives } from "./Alternative/Alternatives";
 import { AlternativeNumber } from "./Alternative/AlternativeNumber";
 import { AlternativeKanji } from "./Alternative/AlternativeKanji";
 import { AlternativeUnit } from "./Alternative/AlternativeUnit";
-import { separateList } from "./Alternative/AlternativeType";
 
 import fs from "fs";
 import { exit } from "process";
+import { Alternative } from "./Alternative/util/AlternativeType";
 
-function createJson(min:boolean, dict:boolean, type:string) {
+function createJson(min:boolean, dict:boolean, _data:Alternative[], name:string) {
     const space = min ? undefined : '\t';
-    let filename = (dict ? "Dict" : "") + (min ? ".min.json" : ".json");
-    let data;
-    switch(type){
-        case "all":
-            filename = "dist/Alternatives" + filename;
-            data = Alternatives
-            break;
-        case "kanji":
-            filename = "dist/AlternativeKanjis" + filename;
-            data = AlternativeKanji
-            break;
-        case "number":
-            filename = "dist/AlternativeNumbers" + filename;
-            data = separateList(AlternativeNumber)
-            break;
-        case "unit":
-            filename = "dist/AlternativeUnits" + filename;
-            data = AlternativeUnit
-            break;
-        default:
-            console.error("type error")
-            exit(-1)
-    }
-
+    let filename = "dist/"+ name +(dict ? "Dict" : "") + (min ? ".min.json" : ".json");
+    let data:any = _data
     if(dict) {
         data = Object.fromEntries(
-        data.map(item => [item.before, item.after])
+            _data.map(item => [item.before, item.after])
         );
     }
 
@@ -44,10 +22,10 @@ function createJson(min:boolean, dict:boolean, type:string) {
 }
 
 function createAllType(min:boolean, dict:boolean){
-    createJson(min, dict, "all")
-    createJson(min, dict, "number")
-    createJson(min, dict, "unit")
-    createJson(min, dict, "kanji")
+    createJson(min, dict, Alternatives, "Alternatives")
+    createJson(min, dict, AlternativeKanji, "AlternativeKanjis")
+    createJson(min, dict, AlternativeNumber, "AlternativeNumbers")
+    createJson(min, dict, AlternativeUnit, "AlternativeUnits")
 }
 
 createAllType(true,true)

@@ -1,4 +1,4 @@
-import { Alternative } from "./AlternativeType";
+import { Alternative } from "./util/AlternativeType";
 
 export const  AlternativeKanji: Alternative[] = [
     { before: "皑", after: "皚" },

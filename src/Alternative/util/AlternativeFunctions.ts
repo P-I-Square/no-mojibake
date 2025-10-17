@@ -1,11 +1,4 @@
-export interface Alternative {
-    before: string,
-    after: string
-}
-export interface AlternativeList {
-    before: string | string[],
-    after: string | string[]
-}
+import { AlternativeList, Alternative, AlternativeBlock } from "./AlternativeType"
 
 export function separate(list: AlternativeList) : Alternative[]{
     let bef :string[] = []
@@ -30,7 +23,19 @@ export function separate(list: AlternativeList) : Alternative[]{
 }
 
 export function separateList(list: AlternativeList[]): Alternative[]{
-    return list.map(item => {
-        return separate(item)
-    }).flat()
+    var l: Alternative[] = []
+    list.forEach(item => {
+        l = l.concat(separate(item))
+    })
+    return l
+}
+
+export function separateBlock<T>(list: AlternativeBlock<T>[]): AlternativeList[]{
+    return list.flatMap(item => {
+        let bef :string[] = []
+        for( let index = 0; index < item.after.length; index++) {
+            bef.push(String.fromCharCode(item.before.charCodeAt(0)+index))
+        }
+        return {before: bef, after: item.after}
+    })
 }
