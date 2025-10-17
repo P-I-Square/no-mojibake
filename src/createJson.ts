@@ -1,11 +1,10 @@
+import fs from "fs";
+import { Alternative } from "./Alternative/util/AlternativeType";
 import { Alternatives } from "./Alternative/Alternatives";
 import { AlternativeNumber } from "./Alternative/AlternativeNumber";
 import { AlternativeKanji } from "./Alternative/AlternativeKanji";
 import { AlternativeUnit } from "./Alternative/AlternativeUnit";
-
-import fs from "fs";
-import { exit } from "process";
-import { Alternative } from "./Alternative/util/AlternativeType";
+import { AlternativeMark } from "./Alternative/AlternativeMark";
 
 function createJson(min:boolean, dict:boolean, _data:Alternative[], name:string) {
     const space = min ? undefined : '\t';
@@ -26,6 +25,7 @@ function createAllType(min:boolean, dict:boolean){
     createJson(min, dict, AlternativeKanji, "AlternativeKanjis")
     createJson(min, dict, AlternativeNumber, "AlternativeNumbers")
     createJson(min, dict, AlternativeUnit, "AlternativeUnits")
+    createJson(min, dict, AlternativeMark, "AlternativeMarks")
 }
 
 createAllType(true,true)

@@ -18,3 +18,8 @@ test("環境依存の単位を変換", () => {
   const result = NoMojibake.encode("㎝㎏㍉㍍");
   expect(result).toBe("cmkgミリメートル");
 });
+
+test("環境依存の記号を変換", () => {
+  const result = NoMojibake.encode("㊤㈱㋿℡〜");
+  expect(result).toBe("(上)(株)令和TEL~");
+});
